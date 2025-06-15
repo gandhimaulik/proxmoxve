@@ -13,7 +13,7 @@ After configuring this integration, the following information is available:
 
  - Binary sensor entities with the status of node and selected virtual machines/containers.
  - Sensor entities of the selected node and virtual machines/containers. Some sensors are created disabled by default, you can enable them by accessing the entity's configuration.
- - Entities button to control selected virtual machines/containers (see about Proxmox user permissions below). By default, the entities buttons to control virtual machines/containers are created disabled, [see how to enable them here](https://github.com/dougiteixeira/proxmoxve/#disabled-entities).
+ - Entities button to control selected virtual machines/containers (see about Proxmox user permissions below). By default, the entities buttons to control virtual machines/containers are created disabled, [see how to enable them here](https://github.com/gandhimaulik/proxmoxve/#disabled-entities).
 
 
 > [!IMPORTANT]  
@@ -27,17 +27,17 @@ Have [HACS](https://hacs.xyz/) installed, this will allow you to update easily.
 
 * Adding Proxmox VE to HACS can be using this button:
 
-[![image](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=dougiteixeira&repository=proxmoxve&category=integration)
+[![image](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=gandhimaulik&repository=proxmoxve&category=integration)
 
 > [!NOTE]
-> If the button above doesn't work, add `https://github.com/dougiteixeira/proxmoxve` as a custom repository of type Integration in HACS.
+> If the button above doesn't work, add `https://github.com/gandhimaulik/proxmoxve` as a custom repository of type Integration in HACS.
 
 * Click Install on the `Proxmox VE` integration.
 * Restart the Home Assistant.
 
 <details><summary>Manual installation</summary>
  
-* Copy `proxmoxve`  folder from [latest release](https://github.com/dougiteixeira/proxmoxve/releases/latest) to [`custom_components` folder](https://developers.home-assistant.io/docs/creating_integration_file_structure/#where-home-assistant-looks-for-integrations) in your config directory.
+* Copy `proxmoxve`  folder from [latest release](https://github.com/gandhimaulik/proxmoxve/releases/latest) to [`custom_components` folder](https://developers.home-assistant.io/docs/creating_integration_file_structure/#where-home-assistant-looks-for-integrations) in your config directory.
 * Restart the Home Assistant.
 </details>
 

@@ -2,17 +2,17 @@
   "domain": "proxmoxve",
   "name": "Proxmox VE",
   "codeowners": [
-    "@dougiteixeira"
+    "@gandhimaulik"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/dougiteixeira/proxmoxve",
+  "documentation": "https://github.com/gandhimaulik/proxmoxve",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/dougiteixeira/proxmoxve/issues",
+  "issue_tracker": "https://github.com/gandhimaulik/proxmoxve/issues",
   "loggers": [
     "proxmoxer"
   ],
   "requirements": [
     "proxmoxer==2.2.0"
   ],
-  "version": "4.0.2"
+  "version": "4.0.3"
 }

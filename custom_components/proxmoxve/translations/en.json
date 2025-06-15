@@ -241,6 +241,12 @@
         "disk_wearout": {
           "name": "Wearout"
         },
+        "disk_written": {
+          "name": "Written"
+        },
+        "disk_read": {
+          "name": "Read"
+        },
         "life_left": {
           "name": "Life left"
         },
