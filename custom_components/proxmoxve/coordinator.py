@@ -729,6 +729,8 @@ class ProxmoxDiskCoordinator(ProxmoxCoordinator):
                 power_hours=UNDEFINED,
                 life_left=UNDEFINED,
                 power_loss=UNDEFINED,
+                disk_written= UNDEFINED,
+                disk_read= UNDEFINED,
             )
 
         for disk in api_status:
@@ -809,6 +811,36 @@ class ProxmoxDiskCoordinator(ProxmoxCoordinator):
 
                     elif int(disk_attribute["id"].strip()) == 174:
                         disk_attributes["power_loss"] = int(disk_attribute["raw"])
+                    elif int(disk_attribute["name"].strip() == "Data Units Written"):
+                        # Extract value in TB or GB and convert to GB as float
+                        raw_value = disk_attribute["raw"].strip()
+                        if "[" in raw_value and "]" in raw_value:
+                            size_str = raw_value.split("[")[1].split("]")[0].strip()
+                            if "TB" in size_str:
+                                tb_value = float(size_str.replace("TB", "").strip())
+                                disk_attributes["disk_written"] = tb_value * 1024
+                            elif "GB" in size_str:
+                                gb_value = float(size_str.replace("GB", "").strip())
+                                disk_attributes["disk_written"] = gb_value
+                            else:
+                                disk_attributes["disk_written"] = UNDEFINED
+                        else:
+                            disk_attributes["disk_written"] = UNDEFINED
+                    elif int(disk_attribute["name"].strip() == "Data Units Read"):
+                        # Extract value in TB or GB and convert to GB as float
+                        raw_value = disk_attribute["raw"].strip()
+                        if "[" in raw_value and "]" in raw_value:
+                            size_str = raw_value.split("[")[1].split("]")[0].strip()
+                            if "TB" in size_str:
+                                tb_value = float(size_str.replace("TB", "").strip())
+                                disk_attributes["disk_read"] = tb_value * 1024
+                            elif "GB" in size_str:
+                                gb_value = float(size_str.replace("GB", "").strip())
+                                disk_attributes["disk_read"] = gb_value
+                            else:
+                                disk_attributes["disk_read"] = UNDEFINED
+                        else:
+                            disk_attributes["disk_read"] = UNDEFINED
 
                 disk_type = disk.get("type", None)
                 return ProxmoxDiskData(
@@ -839,6 +871,8 @@ class ProxmoxDiskCoordinator(ProxmoxCoordinator):
                         )
                         else UNDEFINED
                     ),
+                    disk_written=disk_attributes.get("disk_written", UNDEFINED),
+                    disk_read=disk_attributes.get("disk_read", UNDEFINED),
                     temperature_air=disk_attributes.get("temperature_air", UNDEFINED),
                     temperature=disk_attributes.get("temperature", UNDEFINED),
                     power_cycles=disk_attributes.get("power_cycles", UNDEFINED),

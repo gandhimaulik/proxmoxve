@@ -502,6 +502,30 @@ PROXMOX_SENSOR_DISKS: Final[tuple[ProxmoxSensorEntityDescription, ...]] = (
         suggested_display_precision=0,
         translation_key="disk_wearout",
     ),
+    ProxmoxSensorEntityDescription(
+        key="disk_read",
+        name="Data Read",
+        icon="mdi:harddisk",
+        native_unit_of_measurement=UnitOfInformation.BYTES,
+        device_class=SensorDeviceClass.DATA_SIZE,
+        state_class=SensorStateClass.MEASUREMENT,
+        conversion_fn=lambda x: x * 1024 * 1024 * 1024 if x != UNDEFINED else None,
+        suggested_display_precision=2,
+        suggested_unit_of_measurement=UnitOfInformation.GIGABYTES,
+        translation_key="disk_read",
+    ),
+    ProxmoxSensorEntityDescription(
+        key="disk_written",
+        name="Data Written",
+        icon="mdi:harddisk",
+        native_unit_of_measurement=UnitOfInformation.BYTES,
+        device_class=SensorDeviceClass.DATA_SIZE,
+        state_class=SensorStateClass.MEASUREMENT,
+        conversion_fn=lambda x: x * 1024 * 1024 * 1024 if x != UNDEFINED else None,
+        suggested_display_precision=2,
+        suggested_unit_of_measurement=UnitOfInformation.GIGABYTES,
+        translation_key="disk_written",
+    ),
 )
 
 PROXMOX_SENSOR_ZFS: Final[tuple[ProxmoxSensorEntityDescription, ...]] = (
